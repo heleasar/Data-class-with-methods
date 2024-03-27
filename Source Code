@@ -1,0 +1,52 @@
+class Data:
+    def __init__(self):
+        self.numbers = []
+
+    def display_menu(self):
+        print("Choose one of the following options:")
+        print("0. Quit")
+        print("1. Input Numbers")
+        print("2. Display Numbers")
+        print("3. Search Numbers")
+        print("4. Delete Numbers")
+
+    def input_numbers(self):
+        n = int(input("Enter the number of integers you want to input: "))
+        print("Enter the integers:")
+        for i in range(n):
+            self.numbers.append(int(input()))
+
+    def display_numbers(self):
+        print("The numbers are:")
+        for num in self.numbers:
+            print(num)
+
+    def search_numbers(self):
+        num = int(input("Enter the number you want to search: "))
+        try:
+            index = self.numbers.index(num)
+            print(f"The number {num} is found at index {index}")
+        except ValueError:
+            print(f"The number {num} is not found")
+
+    def delete_numbers(self):
+        self.numbers.clear()
+        print("All numbers are deleted")
+
+def main():
+    data = Data()
+    choice = -1
+    while choice != 0:
+        data.display_menu()
+        choice = int(input("Enter your choice: "))
+        if choice == 1:
+            data.input_numbers()
+        elif choice == 2:
+            data.display_numbers()
+        elif choice == 3:
+            data.search_numbers()
+        elif choice == 4:
+            data.delete_numbers()
+
+if __name__ == '__main__':
+    main()
